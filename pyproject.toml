@@ -1,17 +1,18 @@
-[tool.poetry]
+[project]
 name = "loganalyzer"
 version = "0.1.0"
 description = "loganalyzer using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    { name = "Your Name", email = "you@example.com" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.55.2,<1.0.0",
+    "langchain>=0.0.236",
+    "langchain-community>=0.0.3",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = ">=0.55.2,<1.0.0" }
-langchain = ">=0.0.236"  
-langchain-community = ">=0.0.3"
-
-
-[tool.poetry.scripts]
+[project.scripts]
 loganalyzer = "loganalyzer.main:run"
 run_crew = "loganalyzer.main:run"
 train = "loganalyzer.main:train"
@@ -19,5 +20,7 @@ replay = "loganalyzer.main:replay"
 test = "loganalyzer.main:test"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
