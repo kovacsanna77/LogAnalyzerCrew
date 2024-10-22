@@ -1,6 +1,6 @@
 load_task:
   description: >
-    Load and read the data from the input file.
+    Load and read the data from the {input_file}.
     Make sure you organize it in a manner that can be processed by other agents 
     and tasks to analyze the data.
   expected_output: >
