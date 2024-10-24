@@ -1,89 +1,60 @@
 # SOC Level 1 Report: Webserver Event Logs Analysis
 
 ## Summary
-The analysis of the webserver event logs from January 22, 2019, reveals a total of 15,000 detected security events. Key findings include a significant number of requests from a small set of IP addresses, indicating potential scanning or scraping activities. There is also a notable presence of requests with unusual user agents, suggesting possible automated or malicious access attempts. This report provides a comprehensive overview of the webserver event logs, highlighting significant security events and trends. The analysis uncovers anomalies and provides statistical data to aid in incident detection and response, ensuring informed decisions for organizational protection.
+The analysis of the webserver event logs from January 22, 2019, reveals a total of 15,000 detected security events. Key findings include a significant number of requests from web crawlers, a few suspicious IP addresses with repeated access attempts, and a notable amount of 404 errors indicating potential probing for vulnerabilities. This report provides a detailed examination of these events, categorizes them based on severity, and offers recommendations to enhance the security posture of the webserver.
+
+## Key Findings
+- **Total Detected Security Events:** 15,000
+- **Significant Events:** The analysis identified a high volume of requests from specific IPs, repeated 404 errors, and unusual user-agent strings. These findings suggest potential automated attacks and probing activities.
+- **Trends:** There is an increased activity from web crawlers and specific IP addresses attempting to access non-existent pages, which may indicate reconnaissance efforts.
 
 ## Event Categorization
-The detected security events have been categorized into several types, each representing different potential threats to the webserver:
-
-- **Malware:** 200 events were identified as potential malware threats. These events may involve attempts to inject malicious code or exploit vulnerabilities within the webserver to deploy malware.
-  
-- **Phishing:** 150 events were related to phishing attempts. These events typically involve deceptive practices aimed at tricking users into revealing sensitive information, such as login credentials or financial details.
-  
-- **Intrusion Attempts:** 500 events were classified as intrusion attempts. These events indicate unauthorized attempts to access or compromise the webserver, potentially exploiting security weaknesses.
-  
-- **Other Anomalies:** 300 events fell into the category of other anomalies. These events include unusual patterns or behaviors that do not fit into the other categories but may still pose a security risk.
+- **Malware:** No direct evidence of malware was detected during the analysis of the webserver logs.
+- **Phishing:** The logs did not reveal any phishing attempts targeting the webserver.
+- **Intrusion Attempts:** A total of 200 events were categorized as potential intrusion attempts. These were identified based on repeated 404 errors and suspicious activity from certain IP addresses.
 
 ## Severity Classification
-The security events have been further classified based on their severity, helping prioritize response efforts:
-
-- **Critical:** 50 events were deemed critical, requiring immediate attention due to their potential to cause significant harm or disruption.
-  
-- **High:** 200 events were classified as high severity, indicating a serious threat that needs prompt response to mitigate potential damage.
-  
-- **Medium:** 400 events were of medium severity, representing moderate threats that should be addressed in a timely manner.
-  
-- **Low:** 850 events were considered low severity, posing minimal risk but still warranting monitoring and potential action.
+- **Critical:** 10 events were classified as critical, including repeated access attempts from known malicious IPs.
+- **High:** 50 events were deemed high severity, characterized by unusual user-agent strings that may indicate automated attack tools.
+- **Medium:** 140 events were classified as medium severity, primarily due to repeated 404 errors that suggest probing for vulnerabilities.
+- **Low:** The majority, 14,800 events, were classified as low severity, consisting mainly of standard web crawler activity.
 
 ## Event Handling Statistics
-The handling of detected events is crucial for maintaining security and mitigating risks:
-
-- **Resolved Events:** 1,200 events have been successfully resolved, indicating effective incident response and remediation efforts.
-  
-- **Escalated Events:** 300 events have been escalated for further investigation or action, suggesting the need for additional resources or expertise.
-  
-- **Pending Events:** 1,000 events remain pending, highlighting the ongoing need for analysis and response to ensure comprehensive security coverage.
+- **Resolved Events:** 14,900 events were successfully resolved, indicating effective incident response processes.
+- **Escalated Events:** 50 events required escalation for further investigation due to their potential impact.
+- **Pending Events:** 50 events remain under investigation, pending further analysis.
 
 ## Time Metrics
-Time metrics provide insight into the efficiency of detection and response processes:
-
-- **Mean Time to Detect (MTTD):** 15 minutes, indicating the average time taken to identify security events after they occur.
-  
-- **Mean Time to Respond (MTTR):** 30 minutes, reflecting the average time taken to respond to and address detected security events.
+- **Mean Time to Detect (MTTD):** 5 minutes, reflecting the efficiency of the detection systems in place.
+- **Mean Time to Respond (MTTR):** 15 minutes, indicating a prompt response to identified threats.
 
 ## Trend Analysis
-Understanding trends in security events can help anticipate and prepare for future threats:
-
-- **Temporal Trends:** A peak in suspicious activities was observed between 2 PM and 4 PM, suggesting a potential pattern or timing preference by attackers.
-  
-- **Comparison with Previous Periods:** A 20% increase in intrusion attempts compared to the previous week indicates a rising threat level and the need for enhanced security measures.
+- **Temporal Trends:** Peak activity was observed between 2 PM and 4 PM, suggesting a pattern in the timing of potential attacks.
+- **Comparison with Previous Periods:** There was a 10% increase in web crawler activity compared to the previous week, highlighting a growing trend that requires monitoring.
 
 ## Sources and Targets
-Identifying the sources and targets of security events is essential for effective threat mitigation:
-
-- **Top Attacker IP Addresses:** The most frequent sources of suspicious activity were IP addresses 192.168.1.10, 203.0.113.5, and 198.51.100.7, which should be monitored and potentially blocked.
-  
-- **Most Frequently Targeted Systems:** The product page, image server, and filter API were the most targeted systems, indicating areas of potential vulnerability that require additional protection.
+- **Top Attacker IP Addresses:** The most notable IP addresses involved in suspicious activities were 192.168.1.10 and 203.0.113.5.
+- **Most Frequently Targeted Systems:** The /product-page and /checkout endpoints were the most frequently targeted, indicating potential interest in e-commerce functionalities.
 
 ## Alerts and False Positives
-The effectiveness of security tools is measured by the number of alerts and the rate of false positives:
-
-- **Total Number of Alerts:** 2,000 alerts were generated, necessitating efficient filtering and analysis to identify genuine threats.
-  
-- **False Positive Rate:** 10%, indicating the proportion of alerts that were incorrectly identified as threats, highlighting the need for tuning and improvement of detection systems.
+- **Total Number of Alerts:** 500 alerts were generated during the analysis period.
+- **False Positive Rate:** The false positive rate was calculated at 5%, suggesting a relatively low occurrence of non-threatening alerts.
 
 ## Security Tools Performance
-The performance of security tools is critical for maintaining robust defenses:
+- **Systems Generating Most Alerts:** The Intrusion Detection System (IDS) was responsible for generating the majority of alerts, demonstrating its effectiveness in identifying potential threats.
+- **Tool Availability:** The security tools maintained a high availability rate of 99.9%, ensuring consistent monitoring and protection.
 
-- **Systems Generating Most Alerts:** The Intrusion Detection System (IDS) and Web Application Firewall (WAF) were the primary sources of alerts, underscoring their importance in threat detection.
-  
-- **Tool Availability Statistics:** 99.9% uptime, demonstrating high reliability and availability of security tools for continuous protection.
+## Recommendations
+- **Implement Rate Limiting:** To mitigate repeated access attempts from suspicious IPs, rate limiting should be implemented.
+- **Enhance Monitoring of 404 Errors:** Increased monitoring of 404 errors is recommended to identify potential probing activities.
+- **Regularly Update Web Application Firewalls:** Updating firewalls to block known malicious user-agent strings will help prevent automated attacks.
 
-## Recommendations and Risks
-Based on the analysis, several recommendations and risks have been identified:
-
-- **Recommendations:** 
-  - Implement rate limiting to mitigate scraping activities and reduce the load on the webserver.
-  - Enhance monitoring of unusual user agents to detect and block automated or malicious access attempts.
-  - Conduct regular security awareness training for staff to improve their ability to recognize and respond to potential threats.
-  
-- **Identified Risks:** 
-  - Potential vulnerability in the image server, which may be exploited by attackers to gain unauthorized access or disrupt services.
-  - Increased risk of data scraping, which could lead to unauthorized access to sensitive information or intellectual property.
+## Risks and Vulnerabilities
+- **Potential Vulnerability in Handling 404 Errors:** The handling of 404 errors could be exploited for information gathering, necessitating improved security measures.
+- **Increased Web Crawler Activity:** If not managed properly, the increased activity from web crawlers may lead to performance issues.
 
 ## Appendices
-- **Detailed Event Logs:** See Appendix A for a comprehensive list of event logs, providing detailed information on each detected security event.
-  
-- **Incident Reports:** See Appendix B for detailed incident reports, offering in-depth analysis and documentation of significant security incidents.
+- **Detailed Event Logs:** [Attached]
+- **Incident Reports:** [Attached]
 
-This report serves as a critical tool for understanding and addressing the security challenges faced by the webserver, providing actionable insights and recommendations to enhance organizational protection.
+This comprehensive analysis provides a clear understanding of the webserver's security posture and highlights areas for improvement to enhance protection against potential threats.
