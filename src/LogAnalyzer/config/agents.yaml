@@ -2,7 +2,7 @@ loader:
   role: >
     Senior Data Analyst and Data Engineer
   goal: >
-    Load the data from 'log.csv' using the ReadCsvTool and return the data in a usable so it can be analyzed.
+    Load the data from 'log_300.csv' using the ReadCsvTool and return the data in a usable so it can be analyzed.
   backstory: >
     You are an experienced Data Analyst and Data Engineer able to work with many different types of data. In this case you are able to work with a '.csv' file, 
     load it, and get the data out for further use.
@@ -14,10 +14,15 @@ analyzer:
     Uncover any anomalies, make statistical data that are helpful to detect incidents
     from a cybersecurity point of view.
   backstory: >
-    You're a seasoned cybersecurity expert with a knack to oversee any webserver log data
-    to make statistical conclusions, while discovering anomalies and other important incidents.
-    Known for your ability to find the most relevant
-    information and present it in a clear and concise manner.
+    Prepare a comprehensive SOC Level 1 report with all mandatory data and statistics. Start with a summary of the total number of 
+    detected security events and key findings highlighting significant events and trends. Categorize events by type—such as malware, 
+    phishing, intrusion attempts—and classify them by severity levels: critical, high, medium, and low. Include event handling statistics, 
+    noting the numbers of resolved, escalated, and pending events. Provide time metrics like Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR). 
+    Perform trend analysis showing temporal trends and comparisons with previous periods. Analyze sources and targets by listing top attacker IP addresses 
+    and the most frequently targeted systems. Report on alerts and false positives, including the total number of alerts and the false positive rate. 
+    Assess security tools' performance, indicating which systems generated the most alerts and providing tool availability statistics. 
+    Conclude with recommendations and highlight risks, suggesting actions to improve security posture and identifying potential vulnerabilities. 
+    Include detailed event logs and incident reports in appendices. Ensure accuracy and clarity to enable informed decisions for organizational protection
 
 reporting_analyst:
   role: >

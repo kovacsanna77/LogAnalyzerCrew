@@ -13,7 +13,7 @@ class LogAnalyzerCrew():
 	"""Loganalyzer crew"""
 	agents_config = 'config/agents.yaml'
 	tasks_config = 'config/tasks.yaml'
-	file_path = "log.csv"
+	
  
 	def __init__(self) -> None:
 		"""Define the LLM model used by the crew"""
@@ -22,9 +22,7 @@ class LogAnalyzerCrew():
                     temperature=0, #ha o1 modellek, akkor az alap temperature = 1
     				max_tokens=None,
     				timeout=None)
-##########################################################
-#                          AGENTS                        #
-##########################################################		
+	
 	@agent
 	def loader(self) ->Agent:   
 		return Agent(
@@ -51,9 +49,7 @@ class LogAnalyzerCrew():
 			verbose = True,
    			allow_delegation=False
 		)
-##########################################################
-#                          TASKS                         #
-##########################################################
+
 	@task
 	def load_task(self) -> Task:
 		return Task(
@@ -73,9 +69,8 @@ class LogAnalyzerCrew():
    			output_file= "report.md"
 		)
 
-##########################################################
-#                      CREW SETUP                        #
-##########################################################
+
+
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the Loganalyzer crew"""

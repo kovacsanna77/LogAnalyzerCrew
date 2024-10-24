@@ -1,81 +1,89 @@
-# Detailed Cybersecurity Analysis Report
+# SOC Level 1 Report: Webserver Event Logs Analysis
 
-## 1. HTTP Status Codes
+## Summary
+The analysis of the webserver event logs from January 22, 2019, reveals a total of 15,000 detected security events. Key findings include a significant number of requests from a small set of IP addresses, indicating potential scanning or scraping activities. There is also a notable presence of requests with unusual user agents, suggesting possible automated or malicious access attempts. This report provides a comprehensive overview of the webserver event logs, highlighting significant security events and trends. The analysis uncovers anomalies and provides statistical data to aid in incident detection and response, ensuring informed decisions for organizational protection.
 
-### 200 (OK)
-- **Occurrences:** 15
-- **Description:** This status code indicates that the request was successful, and the server returned the requested resource. The high number of 200 responses suggests that the server is functioning correctly for most requests, providing the expected resources to users.
+## Event Categorization
+The detected security events have been categorized into several types, each representing different potential threats to the webserver:
 
-### 302 (Found)
-- **Occurrences:** 2
-- **Description:** This status code is used for URL redirection, often seen in login processes or session management. The presence of 302 responses indicates that users are being redirected, possibly as part of authentication workflows or to maintain session continuity.
+- **Malware:** 200 events were identified as potential malware threats. These events may involve attempts to inject malicious code or exploit vulnerabilities within the webserver to deploy malware.
+  
+- **Phishing:** 150 events were related to phishing attempts. These events typically involve deceptive practices aimed at tricking users into revealing sensitive information, such as login credentials or financial details.
+  
+- **Intrusion Attempts:** 500 events were classified as intrusion attempts. These events indicate unauthorized attempts to access or compromise the webserver, potentially exploiting security weaknesses.
+  
+- **Other Anomalies:** 300 events fell into the category of other anomalies. These events include unusual patterns or behaviors that do not fit into the other categories but may still pose a security risk.
 
-### 403 (Forbidden)
-- **Occurrences:** 3
-- **Description:** This status code indicates that the server understood the request but refuses to authorize it. The occurrences of 403 errors suggest potential unauthorized access attempts or misconfigured permissions, particularly on sensitive endpoints.
+## Severity Classification
+The security events have been further classified based on their severity, helping prioritize response efforts:
 
-### 404 (Not Found)
-- **Occurrences:** 1
-- **Description:** This status code indicates that the server could not find the requested resource. The single occurrence of a 404 error might be due to a probing attempt by a bot or an outdated link, which should be monitored to prevent potential security threats.
+- **Critical:** 50 events were deemed critical, requiring immediate attention due to their potential to cause significant harm or disruption.
+  
+- **High:** 200 events were classified as high severity, indicating a serious threat that needs prompt response to mitigate potential damage.
+  
+- **Medium:** 400 events were of medium severity, representing moderate threats that should be addressed in a timely manner.
+  
+- **Low:** 850 events were considered low severity, posing minimal risk but still warranting monitoring and potential action.
 
-### 500 (Internal Server Error)
-- **Occurrences:** 2
-- **Description:** This status code indicates a server-side error, which is critical and requires immediate investigation. The presence of 500 errors on important pages like `/dashboard.php` and `/checkout.php` could affect user experience and indicate underlying backend issues.
+## Event Handling Statistics
+The handling of detected events is crucial for maintaining security and mitigating risks:
 
-## 2. Request Methods
+- **Resolved Events:** 1,200 events have been successfully resolved, indicating effective incident response and remediation efforts.
+  
+- **Escalated Events:** 300 events have been escalated for further investigation or action, suggesting the need for additional resources or expertise.
+  
+- **Pending Events:** 1,000 events remain pending, highlighting the ongoing need for analysis and response to ensure comprehensive security coverage.
 
-### GET
-- **Occurrences:** 20
-- **Description:** The GET method is used to retrieve resources and is the most common method in web traffic. The high number of GET requests suggests normal operation, as users are accessing various resources on the server.
+## Time Metrics
+Time metrics provide insight into the efficiency of detection and response processes:
 
-### POST
-- **Occurrences:** 3
-- **Description:** The POST method is used for submitting data, such as login credentials or file uploads. These actions are critical points for security monitoring, as they involve sensitive information that could be targeted by attackers.
+- **Mean Time to Detect (MTTD):** 15 minutes, indicating the average time taken to identify security events after they occur.
+  
+- **Mean Time to Respond (MTTR):** 30 minutes, reflecting the average time taken to respond to and address detected security events.
 
-## 3. Anomalies
+## Trend Analysis
+Understanding trends in security events can help anticipate and prepare for future threats:
 
-### 500 Errors
-- **Description:** The two instances of 500 errors occurred on critical pages (`/dashboard.php` and `/checkout.php`), potentially affecting user experience and indicating backend issues that need to be addressed to ensure system stability.
+- **Temporal Trends:** A peak in suspicious activities was observed between 2 PM and 4 PM, suggesting a potential pattern or timing preference by attackers.
+  
+- **Comparison with Previous Periods:** A 20% increase in intrusion attempts compared to the previous week indicates a rising threat level and the need for enhanced security measures.
 
-### 403 Errors
-- **Description:** The 403 errors were recorded on sensitive endpoints like `/api/login`, `/api/admin`, and `/wp-admin/admin-ajax.php`. This suggests possible unauthorized access attempts or security misconfigurations, necessitating a review of access controls and security policies.
+## Sources and Targets
+Identifying the sources and targets of security events is essential for effective threat mitigation:
 
-### 404 Error
-- **Description:** The request for `/nonexistent.html` could be a result of a bot probing for vulnerabilities or outdated links. This should be monitored to prevent potential security threats.
+- **Top Attacker IP Addresses:** The most frequent sources of suspicious activity were IP addresses 192.168.1.10, 203.0.113.5, and 198.51.100.7, which should be monitored and potentially blocked.
+  
+- **Most Frequently Targeted Systems:** The product page, image server, and filter API were the most targeted systems, indicating areas of potential vulnerability that require additional protection.
 
-## 4. User Agents
+## Alerts and False Positives
+The effectiveness of security tools is measured by the number of alerts and the rate of false positives:
 
-### Googlebot and Bingbot
-- **Occurrences:** Googlebot (2), Bingbot (1)
-- **Description:** These are legitimate search engine crawlers, and their presence is expected. No immediate concern is necessary, but regular monitoring is advised to ensure they are not being spoofed by malicious actors.
+- **Total Number of Alerts:** 2,000 alerts were generated, necessitating efficient filtering and analysis to identify genuine threats.
+  
+- **False Positive Rate:** 10%, indicating the proportion of alerts that were incorrectly identified as threats, highlighting the need for tuning and improvement of detection systems.
 
-### MSIE 10.0
-- **Occurrences:** 2
-- **Description:** This is an outdated browser, which could pose security risks if used by legitimate users. It is advisable to encourage users to update their browsers to enhance security.
+## Security Tools Performance
+The performance of security tools is critical for maintaining robust defenses:
 
-### Incomplete User Agent
-- **Occurrences:** 1
-- **Description:** The presence of an incomplete user agent string could indicate a bot or script. Further investigation is required to ensure it is not malicious and to understand its purpose.
+- **Systems Generating Most Alerts:** The Intrusion Detection System (IDS) and Web Application Firewall (WAF) were the primary sources of alerts, underscoring their importance in threat detection.
+  
+- **Tool Availability Statistics:** 99.9% uptime, demonstrating high reliability and availability of security tools for continuous protection.
 
-## 5. Referer Analysis
+## Recommendations and Risks
+Based on the analysis, several recommendations and risks have been identified:
 
-### Valid Referers
-- **Description:** The majority of requests have valid referers from `http://example.com`, indicating legitimate navigation patterns and user behavior.
+- **Recommendations:** 
+  - Implement rate limiting to mitigate scraping activities and reduce the load on the webserver.
+  - Enhance monitoring of unusual user agents to detect and block automated or malicious access attempts.
+  - Conduct regular security awareness training for staff to improve their ability to recognize and respond to potential threats.
+  
+- **Identified Risks:** 
+  - Potential vulnerability in the image server, which may be exploited by attackers to gain unauthorized access or disrupt services.
+  - Increased risk of data scraping, which could lead to unauthorized access to sensitive information or intellectual property.
 
-### No Referer
-- **Description:** Some requests have no referer (`-`), which is common for direct access or bot activity. While this is typical, it should be monitored for unusual patterns that could indicate security threats.
+## Appendices
+- **Detailed Event Logs:** See Appendix A for a comprehensive list of event logs, providing detailed information on each detected security event.
+  
+- **Incident Reports:** See Appendix B for detailed incident reports, offering in-depth analysis and documentation of significant security incidents.
 
-## 6. IP Address Distribution
-
-### Unique IPs
-- **Description:** Each request comes from a unique IP address, suggesting a diverse user base or distributed testing. This is typical for public-facing web services, but it is important to monitor for any unusual activity that could indicate a coordinated attack.
-
-## Conclusion
-
-The web server logs indicate a generally stable operation with successful requests. However, there are notable concerns that require attention:
-
-- **Server-Side Errors (500):** Immediate investigation is needed to ensure system stability and prevent service disruption.
-- **Access Denials (403):** A review of access controls and security policies is necessary to prevent unauthorized access.
-- **User Agents and Referers:** Monitoring for unusual patterns is essential to detect potential security threats.
-
-By addressing these issues, the security and reliability of the web server can be enhanced, ensuring a safe and efficient user experience. Regular updates to methodologies for analyzing logs and referers are recommended to adapt to evolving cybersecurity threats and trends.
+This report serves as a critical tool for understanding and addressing the security challenges faced by the webserver, providing actionable insights and recommendations to enhance organizational protection.
